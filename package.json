@@ -4,7 +4,7 @@
   "description": "kind of simulation of disk",
   "main": "index.js",
   "scripts": {
-      "build"  : "gulp"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "react": "^0.13.3"
+    "gulp": "^3.9.1",
+    "react": "^0.13.3",
+    "react-dom": "^15.0.1"
   }
 }

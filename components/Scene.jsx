@@ -1,8 +1,20 @@
 import React from 'react';
 
+//Import all components
+import HeadPane from './HeadPane';
+import Pane_L from './Pane_L';
+import Pane_R from './Pane_R';
+
+
 class Scene extends React.Component{
     render(){
-        return <h1>Hola mundo</h1>
+        return (
+            <div>
+                <HeadPane />
+                <Pane_R />
+                <Pane_L />
+            </div>
+        );
     }
 }
 

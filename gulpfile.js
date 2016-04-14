@@ -1,7 +1,6 @@
-//Importamos todos los elementos para gulp
 var gulp = require('gulp');
-var browserify = require('browserify');//Compatibilidad con browsers
-var babelify = require('babelify');//Conversion de ECMA 6 -> 5
+var browserify = require('browserify');
+var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 
 gulp.task('build', function () {
@@ -12,11 +11,6 @@ gulp.task('build', function () {
         .pipe(gulp.dest('build'));
 });
 
-//Handler to changes
-/*
-    TODOS LOS CAMBIOS SE CONVIERTENE EN UN SOLO ARCHIVO
-    UN solo componente
-*/
 gulp.task('watch', ['build'], function () {
     gulp.watch('*.jsx', ['build']);
 });
