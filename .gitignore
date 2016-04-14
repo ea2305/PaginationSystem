@@ -1,2 +1,1 @@
-#Don't upload node modules :c
-./node_modules/
+node_modules/
