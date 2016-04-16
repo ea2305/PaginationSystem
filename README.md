@@ -11,8 +11,7 @@ Some methods to make or delete, disks, directories and files
 ### Run the next command
 	npm install
 
-* Download all components
-## Important !
+## Important! build all components
 ### use the next command to build the ReactJS modules
 	npm run build
 
