@@ -4,6 +4,7 @@ import ReactTransitionGroup from 'react-addons-css-transition-group';
 //Import all components
 import HeadPane from './HeadPane';
 import SetDisk from './SetDisk';
+import SetFolder from './SetFolder';
 import Pane_L from './Pane_L';
 import Pane_R from './Pane_R';
 
@@ -13,6 +14,7 @@ class Scene extends React.Component{
     constructor(props) {
         super(props);
         this.indexDisk = "03";//Because 2 are previos instance
+        this.indexFolder = "0300";
         //Set all disks values
         this.state = {
             disks : [
@@ -78,6 +80,7 @@ class Scene extends React.Component{
         this.onMakeDisk = this.onMakeDisk.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.onMakeDir = this.onMakeDir.bind(this);
+        this.onMountDir = this.onMountDir.bind(this);
         this.onDeleteDir = this.onDeleteDir.bind(this);
     }
 
@@ -148,12 +151,52 @@ class Scene extends React.Component{
         });
     }
 
-    onMakeDir(){
-        console.log('make folder');
+    //CallModal
+    onMountDir(){
+        this.setState({
+            disks : this.state.disks,
+            current : this.state.current,
+            mode : 2,
+            selected : this.state.selected
+        });
+    }
+
+    onMakeDir(x,e){
+        console.log('Make Dir');
+        console.log(x);
+        let current = this.state.current;
+        if(current.name != undefined && current.kind == "disk"){
+            x.key = this.indexFolder++;
+            current.dir.push(x)
+        }
+
+        this.setState({
+            disks : this.state.disks,
+            current : this.state.current,
+            mode : this.state.mode,
+            selected : this.state.selected
+        })
     }
 
     onDeleteDir(){
         console.log('delete folder');
+        let current = this.state.current;
+
+        for(var i = this.state.disks.length - 1; i >= 0 ; i--){
+            for(var j = this.state.disks[i].dir.length - 1; j >= 0 ; j--){
+                if(current.name == this.state.disks[i].dir[j].name && current.kind == "folder"){
+                    this.state.disks[i].dir.splice(j,1);
+                }
+            }
+        }
+
+        console.log(this.state.disks);
+        this.setState({
+            disks : this.state.disks,
+            current : this.state.current,
+            mode : this.state.mode,
+            selected : this.state.selected
+        });
     }
 
     closeModal(){
@@ -171,34 +214,30 @@ class Scene extends React.Component{
     }
 
     render(){
-        if(this.state.mode == 0){
-            return (
-                <div className="Scene">
-                    <HeadPane Data={this.state} onMakeFile={this.onMakeFile}
-                        onDeleteFile={this.onDeleteFile} onMountDisk={this.onMountDisk}
-                        onUnmountDisk={this.onUnmountDisk} onDeleteDir={this.onDeleteDir} onMakeDir={this.onMakeDir}/>
-                    <div className="Panes">
-                        <Pane_L Data={this.state} onSelect={this.onSelect} />
-                        <Pane_R Data={this.state.current} selectedItem={this.selectedItem}/>
-                    </div>
-                </div>
-            );
-        }else{
 
-            return (
-                <div className="Scene ">
-                    <SetDisk onMakeDisk={this.onMakeDisk} closeModal={this.closeModal}/>
-                    <HeadPane Data={this.state} onMakeFile={this.onMakeFile}
-                        onDeleteFile={this.onDeleteFile} onMountDisk={this.onMountDisk}
-                        onUnmountDisk={this.onUnmountDisk} />
-                    <div className="Panes">
-                        <Pane_L Data={this.state} onSelect={this.onSelect} />
-                        <Pane_R Data={this.state.current} />
-                    </div>
+        return (
+            <div className="Scene">
+                {(() => {
+                    switch (this.state.mode) {
+                        case 0:
+                            return;
+                        case 1:
+                            return <SetDisk onMakeDisk={this.onMakeDisk} closeModal={this.closeModal} />;
+                        case 2:
+                            return <SetFolder onMakeDir={this.onMakeDir} closeModal={this.closeModal} />;
+                        default:
+                            return;
+                    }
+                })(this)}
+                <HeadPane Data={this.state} onMakeFile={this.onMakeFile}
+                    onDeleteFile={this.onDeleteFile} onMountDisk={this.onMountDisk}
+                    onUnmountDisk={this.onUnmountDisk} onDeleteDir={this.onDeleteDir} onMakeDir={this.onMountDir} />
+                <div className="Panes">
+                    <Pane_L Data={this.state} onSelect={this.onSelect} />
+                    <Pane_R Data={this.state.current} selectedItem={this.selectedItem}/>
                 </div>
-            );
-
-        }
+            </div>
+        );
 
     }
 }
