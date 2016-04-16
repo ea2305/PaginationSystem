@@ -8,19 +8,18 @@ Some methods to make or delete, disks, directories and files
 * Ruby
 
 ## Get start
-Run the next command
-	npm install
+### Run the next command
+	`npm install`
 
-Download all components
+* Download all components
 ## Important !
-use the next command to build the ReactJS modules
-	npm run build
+### use the next command to build the ReactJS modules
+	`npm run build`
 
 * you can use Gulp globaly
 
-* install gulp
+### install gulp
+	`npm install -g gulp`
 
-	npm install -g gulp
-
-And now only run 
-	gulp
+### And now only run 
+	`gulp`
