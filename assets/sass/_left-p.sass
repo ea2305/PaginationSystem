@@ -1,0 +1,29 @@
+@import "functions"
+
+$w-l-pane : 25%
+$h-l-pane : 90vh
+
+.left-p
+    +setInitialState($w-l-pane,$h-l-pane,#383736)
+
+.item-tree
+    transition: all .3s
+    +setInitialState(100%,10%,#3d3b38)
+    padding: 1em 0em 1em 0em
+    color : white
+    &:hover
+        background: #8a8682
+
+.file-tree
+    transition: all .3s
+    +setInitialState(100%,10%,#444240)
+    padding: 1em 0em 1em 0em
+    color : white
+    font-family: Arial
+
+    &:hover
+        background: #8a8682
+
+.selected
+    background: white
+    color : #444240

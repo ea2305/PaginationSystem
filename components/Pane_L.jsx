@@ -1,8 +1,19 @@
 import React from 'react';
+import ItemsTree from './ItemsTree';
 
-class Pane_L {
+class Pane_L extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
     render() {
-        return <h2>Pane L</h2>
+        return (
+
+            <div className="left-p ">
+                <ItemsTree Data={this.props.Data} onSelect={this.props.onSelect}/>
+            </div>
+        );
+
     }
 }
 

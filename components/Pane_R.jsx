@@ -1,8 +1,19 @@
 import React from 'react';
+import ItemsExp from './ItemsExp';
 
-class Pane_R {
+class Pane_R extends React.Component{
+
+    constructor(props){
+        super(props);
+    }
+
     render() {
-        return <h2>Pane L</h2>
+        return (
+            <div className="right-p">
+                <ItemsExp Data={this.props.Data} onSelect={this.props.selectedItem}/>
+            </div>
+
+        );
     }
 }
 

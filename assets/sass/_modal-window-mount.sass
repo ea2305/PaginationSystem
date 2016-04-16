@@ -1,0 +1,45 @@
+.modal-window-mount
+    +setInitialState(30%,auto,white)
+    box-shadow: 5px 10px 10px #888888
+    position: absolute
+    text-align: center
+    top : 20%
+    left: 40%
+
+    img
+        +setInitialState(150px,150px,transparent)
+    p
+        transition: all .3s
+        margin: 0px
+
+
+    .input-modal
+        +setInitialState(35%,5vh,white)
+        margin: 2px 0px 2px 0px
+        border: 1px solid black
+        border-radius: 2px
+        text-align: center
+
+
+    .btn-format
+        margin: 5px 0px 20px 0px
+        transition: all .3s
+        font-size: 13px
+        +setInitialState(35%,5vh,white)
+        border: 1px
+        border-radius: 3px
+        &:hover
+            background: tomato
+            color : white
+            box-shadow: 5px 5px 10px #888888
+
+    .tools
+        +setInitialState(100%,5vh,#d67e2c)
+        button
+            transition: all .3s
+            +setInitialState(10%,5vh,#d67e2c)
+            border-radius: 10%
+            border: 0px
+            &:hover
+                background: white
+                color: black

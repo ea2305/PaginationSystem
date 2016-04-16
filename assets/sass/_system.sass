@@ -1,0 +1,34 @@
+//
+    Styles  for scene and main pane, size and structure.
+@import "functions"
+
+$w-Scene : 100%
+$h-Scene : 100vh
+
+html body
+    padding: 0px
+    margin: 0px
+    background: #dde3e1
+
+*
+    font-family: Arial
+
+.Scene
+    +setInitialState($w-Scene,$h-Scene,tomato)
+
+.Panes
+    +setInitialState($w-Scene,($h-Scene - 10vh),#e8e7ed)
+    display: inline-flex
+    margin: 0px
+
+.left
+    float: left
+
+.right
+    float: right
+
+.center
+    text-align: center
+
+.hidden
+    display: none
