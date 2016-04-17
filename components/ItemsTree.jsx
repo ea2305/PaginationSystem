@@ -30,7 +30,7 @@ class ItemsTree extends React.Component {
 
             return (
                 <div key={e.key}>
-                    <div id={index} className="item-tree center" onClick={this.clickOver.bind(this,e)}>
+                    <div id={e.key} className="item-tree center" onClick={this.clickOver.bind(this,e)}>
                         <i className="fa fa-hdd-o" aria-hidden="true"></i>
                         {" " + e.name}
                     </div>
@@ -55,8 +55,14 @@ class Directory extends React.Component{
 
         let elements = Folders.map((e,index) => {
             return(
-                <div id={"file_" + index} key={e.key + index} className="file-tree center" onClick={this.props.onClick.bind(this,e)}>
-                    <i className="fa fa-folder-o" aria-hidden="true"></i>
+                <div id={"file_" + e.key} key={e.key + index} className="file-tree center" onClick={this.props.onClick.bind(this,e)}>
+                    {(()=>{
+                        if(e.kind == "folder"){
+                            return(<i className="fa fa-folder-o" aria-hidden="true"></i>);
+                        }else{
+                            return(<i className="fa fa-files-o" aria-hidden="true"></i>);
+                        }
+                    })(this)}
                     {" " + e.name}
                 </div>
             );

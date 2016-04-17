@@ -1,28 +1,33 @@
 import React from 'react';
 
-class SetFolder extends React.Component {
+class SetFile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name : "",
             key : "",
-            kind : "folder",
+            kind : "file",
             father : "",
-            dir : []
+            name : this.props.nameFile,
+            size : 0,
+            type : "txt",
+            permisions : "rw",
+            clusterStart : "",
+            date : "00/00/00,00:00"
         }
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    setText(e){
+        this.props.textDefault = e.target.value;
+        console.log('hola ----');
+        console.log(this.props.textDefault);
     }
 
     handleChange(e){
         this.setState({
             name : e.target.value,
-            key : "",
-            kind : "folder",
-            father : "",
-            dir : []
         });
     }
-
     render(){
         return(
             <section className="modal-window-mount">
@@ -32,17 +37,16 @@ class SetFolder extends React.Component {
                     <button className="fa fa-minus left" type="button" name="button"></button>
                 </article>
                 <article className="">
-                    <img src="assets/img/Folder-icon.png" alt="Folder-icon"></img>
                     <br></br>
                     <input className="input-modal" id="name" type="text"
                         name="name" value={this.state.name} onChange={this.handleChange}
-                        placeholder="Name Folder"></input>
-
+                        placeholder="Name File"></input>
+                    <textarea name="name" rows="8" cols="40" defaultValue={this.props.textDefault} onChange={this.props.setText}></textarea>
                     <br></br>
-                    <button id="makeFolder" className="btn-folder"
-                         type="button" name="button" onClick={this.props.onMakeDir.bind(this,this.state)}>
-                         <i className="fa fa-folder-o" aria-hidden="true"></i>
-                        Make Folder
+                    <button id="makeFolder" className="btn-file"
+                         type="button" name="button" onClick={this.props.onMakeFile.bind(this,this.state)}>
+                         <i className="fa fa-file-o" aria-hidden="true"></i>
+                         Save File
                     </button>
                 </article>
             </section>
@@ -50,4 +54,4 @@ class SetFolder extends React.Component {
     }
 }
 
-export default SetFolder;
+export default SetFile;

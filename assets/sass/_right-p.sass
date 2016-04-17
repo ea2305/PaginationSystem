@@ -4,4 +4,19 @@ $w-l-pane : 75%
 $h-l-pane : 90vh
 
 .right-p
-    +setInitialState($w-l-pane,$h-l-pane,#d7ecee)
+    +setInitialState($w-l-pane,$h-l-pane,#cddbe3)
+
+.item-exp
+    transition: all .3s
+    display: inline-block
+    text-align: center
+    +setInitialState(150px,100px,#cddbe3)
+    padding-top: 5%
+
+    &:hover
+        background: #5CC0BF
+        color: white
+
+.selected_item
+    background: #5CC0BF
+    color: white

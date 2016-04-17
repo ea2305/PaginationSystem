@@ -10,7 +10,9 @@ class Pane_R extends React.Component{
     render() {
         return (
             <div className="right-p">
-                <ItemsExp Data={this.props.Data} onSelect={this.props.selectedItem}/>
+                <ItemsExp Data={this.props.Data}
+                    onSelect={this.props.selectedItem}
+                    openFile={this.props.openFile}/>
             </div>
 
         );

@@ -5,7 +5,7 @@ class SetDisk extends React.Component {
         super(props);
         this.state = {
             name : "",
-            sizeDisk : 0,
+            sizeDisk : 128,
             sizeCluster : 32,
             selector : "FAT 16",
             key : "",
@@ -49,10 +49,11 @@ class SetDisk extends React.Component {
     getInfo(){
         let isValid = true;
         let sC = this.state.sizeCluster;
+        let sD = this.state.sizeDisk;
 
         isValid = (this.state.name.length > 0 && isValid);
-        isValid = (this.state.sizeDisk > 0 && isValid);
-        isValid = (sC > 31 && sC < 32768 && isValid);
+        isValid = (sD > 127 && sD < 1048577 && isValid);
+        isValid = (sC > 31 && sC < 32769 && isValid);
 
         if(isValid){
             alert("Datos Validos");
