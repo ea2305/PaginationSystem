@@ -26,59 +26,7 @@ class Scene extends React.Component{
 
         //Set all disks values
         this.state = {
-            disks : [
-                {
-                    name : "Disk_A",
-                    sizeDisk : 1000000,
-                    sizeCluster : 32,
-                    selector : "FAT 16",
-                    key : "1",
-                    kind : "disk",
-                    dir : [
-                    {
-                        name : "Documents",
-                        key : "01",
-                        kind : "folder",
-                        father : "Disk_A",
-                        dir : [
-                            {
-                                key : "001",
-                                kind : "file",
-                                father : "Disk_A",
-                                name : "Hola.txt",
-                                size : 20,
-                                type : "txt",
-                                permisions : "r",
-                                clusterStart : "",
-                                date : "00/00/00,00:00"
-                            },
-                            {
-                                key : "002",
-                                kind : "file",
-                                father : "Disk_A",
-                                name : "Logo.png",
-                                size : 20,
-                                type : "png",
-                                permisions : "r",
-                                clusterStart : "",
-                                date : "00/00/00,00:00"
-                            },
-                            {
-                                key : "003",
-                                kind : "file",
-                                father : "Disk_A",
-                                name : "Mono.txt",
-                                size : 20,
-                                type : "txt",
-                                permisions : "r",
-                                clusterStart : "",
-                                date : "00/00/00,00:00"
-                            }
-                        ]
-                    }
-                    ]
-                }
-            ],
+            disks : [],
             current : {dir : []},
             mode : 0,
             selected : {},
@@ -354,3 +302,59 @@ class Scene extends React.Component{
 
 //Return values to father
 export default Scene;
+
+
+/*
+
+    {
+        name : "Disk_A",
+        sizeDisk : 1000000,
+        sizeCluster : 32,
+        selector : "FAT 16",
+        key : "1",
+        kind : "disk",
+        dir : [
+        {
+            name : "Documents",
+            key : "01",
+            kind : "folder",
+            father : "Disk_A",
+            dir : [
+                {
+                    key : "001",
+                    kind : "file",
+                    father : "Disk_A",
+                    name : "Hola.txt",
+                    size : 20,
+                    type : "txt",
+                    permisions : "r",
+                    clusterStart : "",
+                    date : "00/00/00,00:00"
+                },
+                {
+                    key : "002",
+                    kind : "file",
+                    father : "Disk_A",
+                    name : "Logo.png",
+                    size : 20,
+                    type : "png",
+                    permisions : "r",
+                    clusterStart : "",
+                    date : "00/00/00,00:00"
+                },
+                {
+                    key : "003",
+                    kind : "file",
+                    father : "Disk_A",
+                    name : "Mono.txt",
+                    size : 20,
+                    type : "txt",
+                    permisions : "r",
+                    clusterStart : "",
+                    date : "00/00/00,00:00"
+                }
+            ]
+        }
+        ]
+    }
+*/
